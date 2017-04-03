@@ -1,0 +1,108 @@
+/**
+ * font-family
+ */
+
+@import "./clearfix.less";
+@import "./reset.less";
+@import "./header.less";
+@import "./footer.less";
+@import "../lib/awesome/css/font-awesome.css";
+* {
+  font-size: 16px;
+  font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.main {
+  .main-left {
+    position: relative;
+    width: 75%;
+    float: left;
+  }
+  .main-right {
+    position: relative;
+    width: 25%;
+    float: left;
+    .rightbar {
+      margin-top: -3.5rem;
+      .rightbar-item {
+        padding: 1rem 0;
+        border-top: 1px solid #efefef;
+        .rightbar-title {
+          padding-bottom: 1rem;
+          font-size: 1rem;
+          color: #999999;
+        }
+        .rightbar-ul {
+          margin-left: 2rem;
+          .rightbar-list {
+            line-height: 1.6rem;
+            color: #bfbfbf;
+            font-size: 14px;
+            &:hover {
+              text-decoration: underline;
+            }
+            &.active {
+              color: #666666;
+            }
+            .rightbar-link {
+              display: block;
+              font-size: inherit;
+              color: inherit;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      .avatar {
+        padding-bottom: 1rem;
+        text-align: center;
+        .avatar-link {
+          display: inline-block;
+          width: 6rem;
+          height: 6rem;
+          overflow: hidden;
+          border: 0.5rem solid rgba(255, 255, 255, 0.9);
+          border-radius: 50%;
+          transition: .3s;
+          &:hover {
+            border: 0.5rem solid rgba(255, 255, 255, 1);
+          }
+          .avatar-image {
+            width: 100%;
+          }
+        }
+        .avatar-title{
+          line-height: 1.6rem;
+          font-size: 1rem;
+          color: #666666; 
+        }
+        .avatar-intro{
+          line-height: 1rem;
+          font-size: 0.8rem;
+          color: #bfbfbf; 
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    width: auto;
+    margin: 0 5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: auto;
+    margin: 0 1rem;
+  }
+}

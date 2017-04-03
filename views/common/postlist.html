@@ -1,0 +1,8 @@
+<div class="postlist">
+  {% for post in postInfo.list %}
+  <article class="postlist-item">
+  	<h3 class="postlist-title">{{post.title}}</h3>
+  	<div class="postlist-intro">{{post.body}}</div>
+  	<div>{{post.comments}} {{post.updated_at}}  {{post.user.login}}</div>
+  {% else %} 没有文章 {% endfor %}
+</div>

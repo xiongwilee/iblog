@@ -1,0 +1,24 @@
+<div class="rightbar">
+  <div class="avatar">
+    <a class="avatar-link" href="{{ownerInfo.html_url}}"><img class="avatar-image" src="{{ownerInfo.logo_url}}"></a>
+    <h3 class="avatar-title">{{ownerInfo.name}}</h3>
+    <span class="avatar-intro">{{ownerInfo.bio}}</span>
+  </div>
+  <div class="nav rightbar-item">
+    <h3 class="rightbar-title">LABELS</h3>
+    <ul class="rightbar-ul">
+      <li class="rightbar-list {{ 'active' if (not siteInfo.label)}}"><a class="rightbar-link" href="/">home</a></li>
+      {% for label in labelInfo %}
+      <li class="rightbar-list {{ 'active' if label.name == siteInfo.label}}"><a class="rightbar-link" href="/post/label/{{label.name}}">{{label.name}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="links rightbar-item">
+    <h3 class="rightbar-title">LINKS</h3>
+    <ul class="rightbar-ul">
+      {% for label in siteInfo.links %}
+      <li class="rightbar-list"><a class="rightbar-link" href="/post/label/{{label.name}}">{{label.name}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
