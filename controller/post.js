@@ -18,7 +18,8 @@ exports.detail = async function() {
 
   await this.render('post-detail', {
     constant: {
-      issues_id: issuesId
+      issues_id: issuesId,
+      html_url: postInfo.html_url
     },
     ownerInfo: this.ownerInfo,
     labelInfo: this.labelInfo,
@@ -73,8 +74,11 @@ exports.commentsform = async function() {
     })
     userInfo = this.backData.userInfo;
   } else {
-    let url = this.href;
-    userInfo = { login_url: `/usr/login?callback=${encodeURI(url)}` }
+    let url = this.query.href || '/';
+    userInfo = {
+      login_url: `/user/login?callback=${encodeURIComponent(url)}`,
+      html_url: this.query.html_url
+    }
   }
 
   await this.render('common/post-comments-form', {
@@ -87,8 +91,8 @@ exports.commentslist = async function() {
   let issueId = parseInt(this.params.id) || 1;
 
   let res = await this.proxy({
-    // commentsInfo: `github_api:get:/repos/${base.config.owner}/${base.config.repo}/issues/${issueId}/comments?page=${page}`
-    commentsInfo: `github_api:get:/repos/koajs/koa/issues/533/comments?page=${page}`
+    commentsInfo: `github_api:get:/repos/${base.config.owner}/${base.config.repo}/issues/${issueId}/comments?page=${page}`
+    // commentsInfo: `github_api:get:/repos/koajs/koa/issues/533/comments?page=${page}`
   }, {
     headers: { 'Authorization': `token ${base.config.token}` }
   })

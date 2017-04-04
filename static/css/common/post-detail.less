@@ -97,10 +97,17 @@
           }
         }
       }
+      .post-comments-blank{
+        .post-comments-blank-text{
+          font-size: .9rem;
+          color: #999999;
+          text-align: center;
+        }
+      }
     }
-    .post-comments-form{
+    .post-comments-form {
+      padding: 2rem 0;
       .comments-item {
-        padding-bottom: 2rem;
         .comments-avatar {
           float: left;
           .comments-avatar-link {
@@ -114,28 +121,102 @@
             }
           }
         }
-        .comments-detail {
+        .comments-form-container {
           font-size: .9rem;
           margin-left: 4rem;
-          .comments-detail-info {
-            color: #bfbfbf;
-            .comments-detail-user,
-            .comments-detail-time {
-              font-family: Lora, 'Times New Roman', serif;
-              color: #999999;
-              font-style: italic;
+          .comments-form {
+            border: 2px solid #efefef;
+            border-radius: 5px;
+            overflow: hidden;
+            &.focus{
+              border-color: #cccccc;
+              transition: .3s;
             }
-            .comments-detail-user {
-              text-decoration: none;
-              &:hover {
-                text-decoration: underline;
+            .comments-form-main {
+              padding: 0px .5rem;
+              .comments-form-textarea {
+                padding: .5rem 0;
+                width: 100%;
+                border: 0px;
+                resize: none;
+                outline: none;
+              }
+            }
+            .comments-form-bottom {
+              background: #efefef;
+              line-height: 2.4rem;
+              font-size: 0.8rem;
+              .comments-form-bottom-intro {
+                float: left;
+                padding-left: .5rem;
+                .comments-form-bottom-link {
+                  color: #666666;
+                  text-decoration: none;
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+              .comments-form-bottom-input {
+                float: right;
+                .comment-form-bottom-loading{
+                  display: none;
+                  margin-right: .3rem;
+                }
+                .comment-form-bottom-button {
+                  outline: none;
+                  height: 2rem;
+                  margin-right: .1rem;
+                  border: none;
+                  border-radius: 2px;
+                  padding: 0 .5rem;
+                  background: #536f9f;
+                  color: rgba(255, 255, 255, .9);
+                  font-weight: bold;
+                  cursor: pointer;
+                  &:hover{
+                    background: #27477c;
+                    color: rgba(255, 255, 255, 1);
+                  }
+                  &:focus{
+                    box-shadow: inset 0px 0px 10px rgba(0,0,0,.4);
+                  }
+                }
               }
             }
           }
-          .comments-detail-content {
-            padding: .5rem 0;
-            line-height: 1.6rem;
-            color: #333333;
+        }
+      }
+      .comments-login {
+        .comments-login-text {
+          line-height: 1.6rem;
+          text-align: center;
+          font-size: .9rem;
+          color: #999999;
+        }
+        .comments-login-link {
+          color: #666666;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .comments-login-button {
+          display: inline-block;
+          padding: 0 .3rem;
+          background-color: #eee;
+          background-image: linear-gradient(to bottom, #fcfcfc 0, #eee 100%);
+          background-repeat: no-repeat;
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          color: #333333;
+          font-weight: bold;
+          margin: 0 .2rem;
+          &:hover {
+            text-decoration: none;
+            background-color: #ddd;
+            background-image: linear-gradient(to bottom, #eee 0, #ddd 100%);
+            border-color: #ccc;
           }
         }
       }

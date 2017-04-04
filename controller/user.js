@@ -11,12 +11,13 @@ exports.login = async function() {
     return console.log(this.userInfo);
   }
 
-  let callback = encodeURI(this.query.callback || '/');
+  let callback = encodeURIComponent(this.query.callback || '/');
+  let redirectUri = `${this.origin}/user/oauth?from=github&callback=${callback}`;
 
   // 重定向到github oauth登录页
   var path = "https://github.com/login/oauth/authorize";
   path += '?client_id=' + base.config.client_id;
-  path += '&redirect_uri=' + this.request.protocol + '://' + this.request.host + '/user/oauth?from=github&callback=${callback}';
+  path += '&redirect_uri=' + encodeURIComponent(redirectUri);
   path += '&scope=user,repo';
   path += '&state=' + (new Date()).valueOf();
 

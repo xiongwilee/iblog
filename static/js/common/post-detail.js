@@ -37,16 +37,64 @@ define(['zepto', 'reveal', 'head', 'marked', 'highlight'],
       renderCommentsForm: function() {
         var me = this;
 
-        $.get('/post/commentsform', function(html) {
+        $.get('/post/commentsform', {
+          href: window.location.href,
+          html_url: window.CONSTANT.html_url
+        }, function(html) {
           me.$commentsFormContainer.html(html);
 
           me.$postCommentsForm = me.$commentsFormContainer.children('.post-comments-form');
+          me.$postCommentsFormItem = me.$postCommentsForm.find('.comments-form');
+          me.$postCommentsFormText = me.$postCommentsFormItem.find('.comments-form-textarea');
+          me.$postCommentsFormLoading = me.$postCommentsFormItem.find('.comment-form-bottom-loading');
 
-          console.log(me.$postCommentsForm)
+          me.bindCommentsFormEvent();
         });
 
       },
-      bindCommentsFormEvent: function() {},
+      bindCommentsFormEvent: function() {
+        var me = this;
+
+        me.postCommentsFlag = false;
+        me.$postCommentsFormItem.on('submit', function(evt) {
+          evt.preventDefault();
+
+          var commentsText = me.$postCommentsFormText.val();
+          if (!commentsText || me.postCommentsFlag) return;
+
+          me.postCommentsFlag = true;
+          me.$postCommentsFormLoading.show()
+
+          $.ajax({
+            type: 'POST',
+            url: '/api/comments/create',
+            contentType: 'application/json',
+            data: JSON.stringify({
+              issues_id: me.issues_id,
+              body: commentsText
+            }),
+            success: function(data) {
+              me.postCommentsFlag = false;
+              me.$postCommentsFormLoading.hide();
+
+              me.$postCommentsFormText.val('');
+              me.renderCommentsList();
+            },
+            error: function() {
+              me.postCommentsFlag = false;
+              me.$postCommentsFormLoading.hide()
+            }
+          });
+        })
+
+        me.$postCommentsFormText.on('focus', function(evt) {
+          me.$postCommentsFormItem.addClass('focus');
+        })
+
+        me.$postCommentsFormText.on('blur', function(evt) {
+          me.$postCommentsFormItem.removeClass('focus');
+        })
+      },
       renderCommentsList: function(data) {
         var me = this;
 

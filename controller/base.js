@@ -18,7 +18,7 @@ const config = {
   token_cookie: 'ACCESS_TOKEN',
 
   // Personal access tokens
-  token: 'e8e38401bd7f22131b9daed7e45ede8503565113',
+  token: '',
 
   // 站点信息
   site: {
