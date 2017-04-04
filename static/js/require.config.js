@@ -4,7 +4,7 @@ requirejs.config({
   },
   map: {
     '*': {
-      'iblog:': 'iblog/static/js'
+      'iblog:': '/iblog/static/js'
     }
   },
   paths: {

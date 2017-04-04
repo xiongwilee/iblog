@@ -1,3 +1,3 @@
-require(['zepto'], function($) {
-  console.log($, 'test0');
+define(['zepto'], function($) {
+  // console.log($, 'test0');
 });

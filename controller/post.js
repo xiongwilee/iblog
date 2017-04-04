@@ -5,22 +5,26 @@ const base = require('./base.js');
 exports.detail = async function() {
   await this.bindDefault();
 
-  let issueId = parseInt(this.params.id) || 1;
+  let issuesId = parseInt(this.params.id) || 1;
 
   await this.proxy({
-    issue: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues/${issueId}`
+    issue: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues/${issuesId}`
   }, {
-    headers: { 'Authorization': `token ${this.token}` }
+    headers: { 'Authorization': `token ${base.config.token}` }
   })
 
-
+  let postInfo = base.getPost(this.backData.issue);
+  this.siteInfo.title = `${postInfo.title} - ${this.siteInfo.title}`;
 
   await this.render('post-detail', {
+    constant: {
+      issues_id: issuesId
+    },
     ownerInfo: this.ownerInfo,
     labelInfo: this.labelInfo,
     siteInfo: this.siteInfo,
     userInfo: this.userInfo,
-    postInfo: base.getPost(this.backData.issue)
+    postInfo: postInfo
   })
 }
 
@@ -35,7 +39,7 @@ exports.label = async function() {
   let res = await this.proxy({
     issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&page=${page}&labels=${label}`
   }, {
-    headers: { 'Authorization': `token ${this.token}` }
+    headers: { 'Authorization': `token ${base.config.token}` }
   });
 
   this.siteInfo.label = label;
@@ -45,6 +49,8 @@ exports.label = async function() {
     curr: page,
     total: postInfo.page.last || 1
   })
+
+  this.siteInfo.title = `${page} - ${this.siteInfo.title}`;
 
   await this.render('post-label', {
     ownerInfo: this.ownerInfo,

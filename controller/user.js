@@ -11,10 +11,12 @@ exports.login = async function() {
     return console.log(this.userInfo);
   }
 
+  let callback = encodeURI(this.query.callback || '/');
+
   // 重定向到github oauth登录页
   var path = "https://github.com/login/oauth/authorize";
   path += '?client_id=' + base.config.client_id;
-  path += '&redirect_uri=' + this.request.protocol + '://' + this.request.host + '/user/oauth?from=github';
+  path += '&redirect_uri=' + this.request.protocol + '://' + this.request.host + '/user/oauth?from=github&callback=${callback}';
   path += '&scope=user,repo';
   path += '&state=' + (new Date()).valueOf();
 
@@ -28,12 +30,12 @@ exports.logout = async function() {
   this.redirect('/home');
 }
 
-exports.avatar = async function (){
+exports.avatar = async function() {
   let query = this.query;
-  try{
+  try {
     let urlObj = url.parse(query.img);
     await this.fetch('https://avatars.githubusercontent.com' + urlObj.path);
-  }catch(err){
+  } catch (err) {
     this.body = {
       code: '1',
       message: 'img path error',
@@ -43,23 +45,25 @@ exports.avatar = async function (){
 }
 
 exports.oauth = async function() {
-  // 为所有的GITHUB请求设置头信息为Accept参数为'application/json'
-  this.headers.accept = 'application/json';
+  // 获取回调页面
+  let callback = this.query.callback || '/';
 
   // 获取access_token
-  let code = this.query.code; 
+  let code = this.query.code;
   await this.proxy({
     oauthInfo: 'github:post:login/oauth/access_token?client_id=' + base.config.client_id + '&client_secret=' + base.config.client_secret + '&code=' + code
+  }, {
+    headers: { accept: 'application/json' }
   })
+
   let access_token = this.backData.oauthInfo.access_token;
   // 如果没有获取到access_token则直接返回
   if (!access_token) {
-    this.body = {
+    return this.body = {
       code: 1,
       message: 'Get access_token error',
       data: this.backData
-    };
-    return;
+    }
   }
 
   // 设置COOKIE，时效为30天
@@ -68,5 +72,5 @@ exports.oauth = async function() {
     expires: new Date(expiresTime)
   });
 
-  this.redirect('/');
+  this.redirect(callback);
 }

@@ -1,9 +1,13 @@
-require(['zepto', 'reveal', 'head', 'marked'], function($, Reveal, head, marked) {
+require(['zepto', 'reveal', 'head', 'marked','iblog:/common/post-comments.js'], function($, Reveal, head, marked, postComments) {
   var $postMarkdown = $('#postMarkdown');
   var $postContainer = $('#postContainer');
 
-console.log(marked($postMarkdown.val()),'~~~~~~~~0')
+postComments.getUserInfo();
+postComments.getCommentsList({
+  issues_id: window.CONSTANT.issues_id
+});
 
+  console.log(postComments,'~~~~~~~~0');
   var postHTML = marked($postMarkdown.val());
   $postContainer.html(postHTML);
   return;

@@ -18,13 +18,14 @@ const config = {
   token_cookie: 'ACCESS_TOKEN',
 
   // Personal access tokens
-  token: '4904bdde6f44f4332dd553552ccf8cd6260592f5',
+  token: '6b264ce4c02e466b31bbbdb1ef0872105ace676a',
 
   // 站点信息
   site: {
     logo: '',
-    title: 'XiongWilee',
-    subTitle: '知而获智，智达高远',
+    name: 'XiongWilee',
+    intro: '知而获智，智达高远',
+    title: 'XiongWilee - 知而获智，智达高远',
     year: new Date().getFullYear(),
     banner: 'https://img003.qufenqi.com/products/c0/72/c072f0506c961f6d1652531d60712c40.jpg',
     links: [{

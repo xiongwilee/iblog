@@ -11,9 +11,9 @@ exports.index = async function() {
     issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&page=${page}`
     // issues: `github_api:/repos/koajs/koa/issues?state=all&page=3`
   }, {
-    headers: { 'Authorization': `token ${this.token}` }
+    headers: { 'Authorization': `token ${base.config.token}` }
   })
-
+  
   let postInfo = base.getPostList(res.issues);
 
   Object.assign(postInfo.page, {
