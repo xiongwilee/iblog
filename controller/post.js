@@ -51,7 +51,7 @@ exports.label = async function() {
     total: postInfo.page.last || 1
   })
 
-  this.siteInfo.title = `${page} - ${this.siteInfo.title}`;
+  this.siteInfo.title = `${label} - ${this.siteInfo.title}`;
 
   await this.render('post-label', {
     ownerInfo: this.ownerInfo,

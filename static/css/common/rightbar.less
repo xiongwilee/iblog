@@ -1,7 +1,18 @@
 .rightbar {
   margin-top: -3.5rem;
   padding: 0 1rem;
+  .opera {
+    display: none;
+    .opera-link{
+      display: inline-block;
+      padding: .5rem;
+
+      color: #333333;
+      text-decoration: none;
+    }
+  }
   .rightbar-item {
+    display: block;
     padding: 1rem 0;
     border-top: 1px solid #efefef;
     .rightbar-title {
@@ -57,6 +68,24 @@
       line-height: 1rem;
       font-size: 0.8rem;
       color: #bfbfbf;
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .rightbar {
+    margin-top: -2.5rem;
+    .opera {
+      display: none;
+    }
+    .rightbar-item {
+      display: none;
+    }
+    .avatar {
+      .avatar-link {
+        width: 4rem;
+        height: 4rem;
+      }
     }
   }
 }

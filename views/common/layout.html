@@ -23,11 +23,11 @@
   <section class="main">
     <div class="container clearfix">
       {% block main %}
-      <div class="main-left">
-        {% block content %} {% endblock %}
-      </div>
       <div class="main-right">
         {% include "./rightbar.html"%}
+      </div>
+      <div class="main-left">
+        {% block content %} {% endblock %}
       </div>
       {% endblock %}
     </div>

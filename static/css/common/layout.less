@@ -9,7 +9,6 @@
 @import "./post-list.less";
 @import "./rightbar.less";
 @import "../lib/awesome/css/font-awesome.css";
-
 html {
   font-size: 16px;
   font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
@@ -18,7 +17,7 @@ html {
 
 .container {
   position: relative;
-  width: 1000px;
+  width: 1280px;
   margin: 0 auto;
 }
 
@@ -31,7 +30,14 @@ html {
   .main-right {
     position: relative;
     width: 25%;
-    float: left;
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .container {
+    width: 1000px;
+    margin: 0 auto;
   }
 }
 
@@ -46,5 +52,22 @@ html {
   .container {
     width: auto;
     margin: 0 1rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    width: auto;
+    margin: 0 10px;
+  }
+  .main {
+    .main-left {
+      width: auto;
+      float: none;
+    }
+    .main-right {
+      width: auto;
+      float: none;
+    }
   }
 }
