@@ -1,0 +1,17 @@
+<div class="post-comments-form">
+  {% if userInfo.login %}
+  <div class="comments-item clearfix">
+    <div class="comments-avatar">
+      <a class="comments-avatar-link" href="{{userInfo.html_url}}"><img class="comments-avatar-img" src="/user/avatar?img={{userInfo.avatar_url | urlencode}}"></a>
+    </div>
+    <div class="comments-detail">
+      <div class="comments-detail-info">
+        <a class="comments-detail-user" href="{{userInfo.html_url}}">{{userInfo.login}}</a> • <span class="comments-detail-time">{{comment.update_time}}</span>
+      </div>
+      <div class="comments-detail-content">{{comment.body}}</div>
+    </div>
+  </div>
+  {% else %} 
+    <a href="{{userInfo.login_url}}">login</a>
+  {% endif %}
+</div>

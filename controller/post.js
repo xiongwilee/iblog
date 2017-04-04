@@ -62,3 +62,46 @@ exports.label = async function() {
 }
 
 exports.label.__regular__ = '/:id'
+
+exports.commentsform = async function() {
+  let access_token = this.cookies.get(base.config.token_cookie);
+
+  let userInfo;
+  if (access_token) {
+    let res = await this.proxy({
+      userInfo: `github_api:get:user?access_token=${access_token}`
+    })
+    userInfo = this.backData.userInfo;
+  } else {
+    let url = this.href;
+    userInfo = { login_url: `/usr/login?callback=${encodeURI(url)}` }
+  }
+
+  await this.render('common/post-comments-form', {
+    userInfo: userInfo
+  })
+}
+
+exports.commentslist = async function() {
+  let page = parseInt(this.query.page) || 1;
+  let issueId = parseInt(this.params.id) || 1;
+
+  let res = await this.proxy({
+    // commentsInfo: `github_api:get:/repos/${base.config.owner}/${base.config.repo}/issues/${issueId}/comments?page=${page}`
+    commentsInfo: `github_api:get:/repos/koajs/koa/issues/533/comments?page=${page}`
+  }, {
+    headers: { 'Authorization': `token ${base.config.token}` }
+  })
+
+  let commentsInfo = base.getCommentsList(res.commentsInfo);
+
+  Object.assign(commentsInfo.page, {
+    curr: page,
+    total: commentsInfo.page.last || 1
+  })
+
+  await this.render('common/post-comments-list', {
+    commentsInfo: commentsInfo
+  })
+}
+exports.commentslist.__regular__ = '/:id'

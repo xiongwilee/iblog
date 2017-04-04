@@ -20,7 +20,6 @@ module.exports = async function() {
   this.userInfo = this.backData.userInfo || {};
   // 管理者信息
   this.ownerInfo = this.backData.ownerInfo || {};
-  this.ownerInfo.logo_url = base.config.site.logo || `/user/avatar?img=${encodeURI(this.ownerInfo.avatar_url)}`;
   // 站点信息
   this.siteInfo = Object.assign({
     description: this.repoInfo.description

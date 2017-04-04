@@ -11,7 +11,9 @@
       <div class="label">
         {% for label in postInfo.labels%}<a class="label-link" href="/post/label/{{label.name}}">{{label.name}}</a>{% endfor %}
       </div>
-      <div class="opera"><a class="opera-item link" href="{{postInfo.user.html_url}}">{{postInfo.user.login}}</a> · <span class="opera-item">{{postInfo.update_time}}</span></a></div>
+      <div class="opera">
+        <a class="opera-item link" href="{{postInfo.user.html_url}}">{{postInfo.user.login}}</a> • <span class="opera-item">{{postInfo.update_time}}</span> • <a class="opera-item link" href="{{postInfo.html_url}}">view on github</a>
+      </div>
     </div>
   </div>
 </header>

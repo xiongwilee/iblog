@@ -12,7 +12,7 @@ requirejs.config({
     'reveal': 'iblog/static/js/lib/reveal/reveal',
     'head': 'iblog/static/js/lib/reveal/head.min',
     'marked': 'iblog/static/js/lib/reveal/marked',
-    'highlight': 'common/static/js/lib/highlight.min',
+    'highlight': 'iblog/static/js/lib/reveal/highlight.min',
     'simplemde': 'iblog/static/js/lib/simplemde.min'
   }
 });

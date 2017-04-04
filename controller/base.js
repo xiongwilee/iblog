@@ -18,7 +18,7 @@ const config = {
   token_cookie: 'ACCESS_TOKEN',
 
   // Personal access tokens
-  token: '6b264ce4c02e466b31bbbdb1ef0872105ace676a',
+  token: 'e8e38401bd7f22131b9daed7e45ede8503565113',
 
   // 站点信息
   site: {
@@ -39,25 +39,40 @@ const config = {
 }
 
 /**
- * 根据需求补充文章内容数据
- * @param  {Object} post 文章数据
+ * 根据需求补充评论列表数据
+ * @param  {Object} comments comments请求数据
+ * @return {Object}        分页及文章列表数据
+ */
+function getCommentsList(comments) {
+  if (!comments.body || !comments.headers) return;
+
+  let pageInfo = getPage(comments.headers.link);
+  let pageList = [];
+
+  comments.body.forEach((item) => {
+    pageList.push(getComments(item));
+  });
+
+  return {
+    page: pageInfo,
+    list: pageList
+  }
+}
+
+/**
+ * 根据需求补充评论内容数据
+ * @param  {Object} post 评论数据
  * @return {Object}      补充之后的文章数据
  */
-function getPost(post) {
-  if (!post || !post.body) return {};
+function getComments(comments) {
+  if (!comments || !comments.body) return {};
 
-
-  let postQuery = getPostQuery(post.body);
-  let postIntro = postQuery.intro || getPostIntro(post.body);
-
-  Object.assign(post, {
-    intro: postIntro,
-    query: postQuery,
-    create_time: formatTime(post.created_at),
-    update_time: formatTime(post.updated_at)
+  Object.assign(comments, {
+    create_time: formatTime(comments.created_at),
+    update_time: formatTime(comments.updated_at)
   })
 
-  return post;
+  return comments;
 }
 
 /**
@@ -82,6 +97,28 @@ function getPostList(issues) {
     page: pageInfo,
     list: pageList
   }
+}
+
+/**
+ * 根据需求补充文章内容数据
+ * @param  {Object} post 文章数据
+ * @return {Object}      补充之后的文章数据
+ */
+function getPost(post) {
+  if (!post || !post.body) return {};
+
+
+  let postQuery = getPostQuery(post.body);
+  let postIntro = postQuery.intro || getPostIntro(post.body);
+
+  Object.assign(post, {
+    intro: postIntro,
+    query: postQuery,
+    create_time: formatTime(post.created_at),
+    update_time: formatTime(post.updated_at)
+  })
+
+  return post;
 }
 
 /**
@@ -163,7 +200,7 @@ function getPage(link) {
     let itemMatch = item.match(reg);
     if (itemMatch && itemMatch.length === 4) {
       let query = querystring.parse(url.parse(itemMatch[2]).query);
-      result[itemMatch[3]] = query.page;
+      result[itemMatch[3]] = parseInt(query.page) || 1;
     }
   })
 
@@ -172,8 +209,10 @@ function getPage(link) {
 
 exports.config = config;
 
-exports.getPost = getPost;
+exports.getCommentsList = getCommentsList;
+exports.getComments = getComments;
 exports.getPostList = getPostList;
+exports.getPost = getPost;
 exports.formatTime = formatTime;
 exports.getPostIntro = getPostIntro;
 exports.getPostQuery = getPostQuery;
