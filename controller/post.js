@@ -13,12 +13,14 @@ exports.detail = async function() {
     headers: { 'Authorization': `token ${this.token}` }
   })
 
+
+
   await this.render('post-detail', {
     ownerInfo: this.ownerInfo,
     labelInfo: this.labelInfo,
     siteInfo: this.siteInfo,
     userInfo: this.userInfo,
-    postInfo: this.backData.issue || {}
+    postInfo: base.getPost(this.backData.issue)
   })
 }
 
@@ -30,7 +32,7 @@ exports.label = async function() {
   let page = parseInt(this.query.page) || 1;
   let label = this.params.id ? this.params.id.toString() : 'blog';
 
-  await this.proxy({
+  let res = await this.proxy({
     issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&page=${page}&labels=${label}`
   }, {
     headers: { 'Authorization': `token ${this.token}` }
@@ -38,16 +40,18 @@ exports.label = async function() {
 
   this.siteInfo.label = label;
 
+  let postInfo = base.getPostList(res.issues);
+  Object.assign(postInfo.page, {
+    curr: page,
+    total: postInfo.page.last || 1
+  })
+
   await this.render('post-label', {
     ownerInfo: this.ownerInfo,
     labelInfo: this.labelInfo,
     siteInfo: this.siteInfo,
     userInfo: this.userInfo,
-    postInfo: {
-      page: page,
-      num: this.repoInfo.open_issues_count,
-      list: this.backData.issues || []
-    }
+    postInfo: postInfo
   })
 }
 

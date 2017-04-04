@@ -1,0 +1,70 @@
+.postlist {
+  padding: 1rem;
+  .postlist-item {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #efefef;
+    .postlist-title {
+      font-size: 1.5rem;
+      line-height: 3rem;
+    }
+    .postlist-image {
+      height: 200px;
+      margin-bottom: 1rem;
+      background: no-repeat center bottom;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+    }
+    .postlist-intro {
+      line-height: 1.5rem;
+      font-size: 0.8rem;
+      color: #bfbfbf;
+    }
+    .postlist-opera {
+      padding-top: 1rem;
+      font-size: 1rem;
+      color: #bfbfbf;
+      .postlist-opera-item {
+        color: #999999;
+        font-family: Lora, 'Times New Roman', serif;
+        font-style: italic;
+      }
+      .postlist-link {}
+    }
+    .postlist-link {
+      color: inherit;
+      text-decoration: inherit;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .postlist-page {
+    text-align: right;
+    .page-item {
+      display: inline-block;
+      font-size: 0.8rem;
+      line-height: 2.4rem;
+      color: #bfbfbf;
+      text-align: center;
+      text-decoration: none;
+    }
+    .page-curr{
+      color: #bfbfbf;
+      margin: 0 0.5rem;
+    }
+    .page-prev, .page-next{
+      width: 4rem;
+
+      border: 1px solid #bfbfbf;
+      border-radius: 2rem;
+      transition: .3s;
+
+      &:hover{
+        border-color: #666666;
+        color: #666666;
+      }
+    }
+  }
+}

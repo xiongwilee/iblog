@@ -13,7 +13,10 @@
 </head>
 
 <body>
-  {% block body %} {% include "./header.html" %}
+  {% block body %} 
+  {% block header %} 
+  {% include "./header.html" %}
+  {% endblock %}
   <section class="main">
     <div class="container clearfix">
       {% block main %}
