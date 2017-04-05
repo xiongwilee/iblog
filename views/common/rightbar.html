@@ -19,8 +19,8 @@
   <div class="links rightbar-item">
     <h3 class="rightbar-title">LINKS</h3>
     <ul class="rightbar-ul">
-      {% for label in siteInfo.links %}
-      <li class="rightbar-list"><a class="rightbar-link" href="/post/label/{{label.name}}">{{label.name}}</a></li>
+      {% for link in siteInfo.links %}
+      <li class="rightbar-list"><a class="rightbar-link" href="{{link.url}}">{{link.name}}</a></li>
       {% endfor %}
     </ul>
   </div>
