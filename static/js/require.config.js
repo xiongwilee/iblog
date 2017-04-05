@@ -4,7 +4,7 @@ requirejs.config({
   },
   map: {
     '*': {
-      'iblog:': '/iblog/static/js'
+      'iblog:': 'iblog/static/js'
     }
   },
   paths: {
@@ -13,6 +13,7 @@ requirejs.config({
     'head': 'iblog/static/js/lib/reveal/head.min',
     'marked': 'iblog/static/js/lib/reveal/marked',
     'highlight': 'iblog/static/js/lib/reveal/highlight.min',
-    'simplemde': 'iblog/static/js/lib/simplemde.min'
+    'simplemde': 'iblog/static/js/lib/simplemde.min',
+    'postdetail': 'iblog/static/js/common/post-detail'
   }
 });
