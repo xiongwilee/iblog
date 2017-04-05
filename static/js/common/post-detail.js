@@ -147,7 +147,7 @@ define(['zepto', 'reveal', 'head', 'marked', 'highlight'],
           var replyText = '@' + $(this).data('user') + ' ';
           if (me.$postCommentsFormText && me.$postCommentsFormText.length > 0) {
             var formText = me.$postCommentsFormText.val();
-            if (formText.indexOf(replyText) !== 0) {
+            if (formText.indexOf(replyText) === -1) {
               me.$postCommentsFormText.val(replyText + formText);
             }
             me.$postCommentsFormText.focus();

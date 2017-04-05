@@ -38,7 +38,7 @@ exports.label = async function() {
   let label = this.params.id ? this.params.id.toString() : 'blog';
 
   let res = await this.proxy({
-    issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&page=${page}&labels=${label}`
+    issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&filter=created&page=${page}&labels=${label}`
   }, {
     headers: { 'Authorization': `token ${base.config.token}` }
   });

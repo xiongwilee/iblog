@@ -8,7 +8,7 @@ exports.index = async function() {
   let page = parseInt(this.query.page) || 1;
 
   let res = await this.proxy({
-    issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&page=${page}`
+    issues: `github_api:/repos/${base.config.owner}/${base.config.repo}/issues?state=open&filter=created&page=${page}`
     // issues: `github_api:/repos/koajs/koa/issues?state=all&page=3`
   }, {
     headers: { 'Authorization': `token ${base.config.token}` }
