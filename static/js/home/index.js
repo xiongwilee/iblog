@@ -1,3 +1,3 @@
-require(['zepto', 'iblog:/common/layout.js'], function($, bootstrap) {
+require(['zepto'], function($) {
   console.log($, 'test1');
 });
