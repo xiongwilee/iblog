@@ -14,7 +14,7 @@
     }
     .post-comments-list {
       .comments-item {
-        padding-bottom: 2rem;
+        padding-bottom: 1.2rem;
         .comments-avatar {
           float: left;
           .comments-avatar-link {
@@ -232,8 +232,16 @@
 @media only screen and (max-width: 640px) {
   .post-detail {
     padding: 2rem 0;
-    .post-comments .post-comments-form .comments-item .comments-form-container .comments-form .comments-form-bottom .comments-form-bottom-intro{
-      display: none;
+    .post-comments {
+      .post-comments-list {
+        .comments-item {
+        }
+      }
+      .post-comments-form {
+        .comments-item .comments-form-container .comments-form .comments-form-bottom .comments-form-bottom-intro {
+          display: none;
+        }
+      }
     }
   }
 }
