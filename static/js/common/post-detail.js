@@ -143,7 +143,18 @@ define(['zepto', 'reveal', 'head', 'marked', 'highlight'],
 
         me.$postCommentsList.on('click', '.comments-detail-replay', function(evt) {
           evt.preventDefault();
-          alert(1);
+
+          var replyText = '@' + $(this).data('user') + ' ';
+          if (me.$postCommentsFormText && me.$postCommentsFormText.length > 0) {
+            var formText = me.$postCommentsFormText.val();
+            if (formText.indexOf(replyText) !== 0) {
+              me.$postCommentsFormText.val(replyText + formText);
+            }
+            me.$postCommentsFormText.focus();
+          }else{
+            alert('Please Login!');
+            window.location.href = "#commentsLogin";
+          }
         });
       },
       setDefault: function() {

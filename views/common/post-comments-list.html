@@ -11,7 +11,7 @@
       <div class="comments-detail-content">
         <textarea class="comments-detail-markdown" style="display: none;">{{comment.body | safe}}</textarea>
       </div>
-      <div class="comments-detail-opera"><a class="comments-detail-replay" href="" title="reply"><i class="fa icon-reply"></i></a> • <a class="comments-detail-github" href="{{comment.html_url}}" title="view on github"><i class="fa icon-github"></i></a> </div>
+      <div class="comments-detail-opera"><a class="comments-detail-replay" data-user="{{comment.user.login}}" href="#" title="reply"><i class="fa icon-reply"></i></a> • <a class="comments-detail-github" href="{{comment.html_url}}" title="view on github"><i class="fa icon-github"></i></a> </div>
     </div>
   </div>
   {% endfor %} 
