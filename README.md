@@ -216,9 +216,9 @@ $ npm run dev
 
 ### TODO
 
-* 基于[reveal.js](https://github.com/hakimel/reveal.js) 直接把文章生成slides；
-* 更友好的labels分类页面，提示当前是在那个label下；
-* 文章自动生成大纲的功能；
+- [x] 基于[reveal.js](https://github.com/hakimel/reveal.js) 直接把文章生成slides；
+- [ ] 更友好的labels分类页面，提示当前是在那个label下；
+- [ ] 文章自动生成大纲的功能；
 
 ## 贡献
 
