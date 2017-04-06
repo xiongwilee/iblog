@@ -151,7 +151,7 @@ define(['zepto', 'reveal', 'head', 'marked', 'highlight'],
               me.$postCommentsFormText.val(replyText + formText);
             }
             me.$postCommentsFormText.focus();
-          }else{
+          } else {
             alert('Please Login!');
             window.location.href = "#commentsLogin";
           }

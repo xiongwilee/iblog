@@ -3,9 +3,7 @@ requirejs.config({
   shim: {
   },
   map: {
-    '*': {
-      'iblog:': 'iblog/static/js'
-    }
+    '*': {}
   },
   paths: {
     'zepto': 'iblog/static/js/lib/zepto.min',
@@ -14,6 +12,7 @@ requirejs.config({
     'marked': 'iblog/static/js/lib/reveal/marked',
     'highlight': 'iblog/static/js/lib/reveal/highlight.min',
     'simplemde': 'iblog/static/js/lib/simplemde.min',
-    'postdetail': 'iblog/static/js/common/post-detail'
+    'postdetail': 'iblog/static/js/common/post-detail',
+    'postslider': 'iblog/static/js/common/post-slider'
   }
 });

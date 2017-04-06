@@ -1,7 +1,7 @@
-require(['zepto', 'reveal', 'head', 'postdetail'], 
-  function($, Reveal, head, postDetail) {
+require(['zepto', 'head', 'postdetail'],
+  function($, head, postDetail) {
 
     var postDetail = new postDetail();
     postDetail.render();
 
-});
+  });
