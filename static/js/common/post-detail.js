@@ -25,10 +25,9 @@ define(['zepto', 'reveal', 'head'],
       },
       renderCommentsForm: function() {
         var me = this;
-        var location = window.location;
 
         $.get('/post/commentsform', {
-          href: location.pathname + location.hash,
+          href: window.location.pathname + '#comments',
           html_url: window.CONSTANT.html_url
         }, function(html) {
           me.$commentsFormContainer.html(html);
