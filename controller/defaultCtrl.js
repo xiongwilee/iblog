@@ -14,6 +14,8 @@ module.exports = async function() {
     headers: { Authorization: `token ${base.config.token}` }
   });
 
+  this.assert(res.repoInfo && res.repoInfo.statusCode === 200, 401, 'Personal Access Token Error!')
+
   // 仓储信息
   this.repoInfo = this.backData.repoInfo || {};
   // 仓储信息
