@@ -6,7 +6,7 @@ module.exports = async function() {
   this.assert(!!base.config.token, 401, 'Personal Access Token Undefined!');
   
   // 获取用户github信息
-  await this.proxy({
+  const res = await this.proxy({
     ownerInfo: `github_api:user?access_token=${base.config.token}`,
     repoInfo: `github_api:/repos/${base.config.owner}/${base.config.repo}`,
     labelInfo: `github_api:/repos/${base.config.owner}/${base.config.repo}/labels`
