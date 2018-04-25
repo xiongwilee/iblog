@@ -1,6 +1,6 @@
 # iBlog：基于Gracejs及github issues的全功能博客方案
 
-**iBlog** 是完全基于[github API](https://developer.github.com/v3/) 并充分利用 [gracejs](https://github.com/xiongwilee/koa-grace) 数据代理特性实现的全功能博客方案。
+**iBlog** 是完全基于[github API](https://developer.github.com/v3/) 并充分利用 [gracejs](https://github.com/xiongwilee/Gracejs) 数据代理特性实现的全功能博客方案。
 
 * **项目地址：** [https://github.com/xiongwilee/iblog](https://github.com/xiongwilee/iblog)
 * **体验地址：** [https://iblog.wilee.me](https://iblog.wilee.me) *(访问比较慢是因为用的最最低配的aws ECS服务)*
@@ -34,7 +34,7 @@ github作为全球最大同性交友网站，已经有人在其上面做了很�
 
 ## 快速开始
 
-iBlog源码独立托管在 [xiongwilee/iblog](https://github.com/xiongwilee/iblog) ，但为了演示简便，在[Gracejs](https://github.com/xiongwilee/koa-grace)里已经默认集成了iBlog的产出文件；所以，接下来直接利用Gracejs带你快速启动iBlog。
+iBlog源码独立托管在 [xiongwilee/iblog](https://github.com/xiongwilee/iblog) ，但为了演示简便，在[Gracejs](https://github.com/xiongwilee/Gracejs)里已经默认集成了iBlog的产出文件；所以，接下来直接利用Gracejs带你快速启动iBlog。
 
 ### 安装
 
@@ -43,19 +43,18 @@ iBlog源码独立托管在 [xiongwilee/iblog](https://github.com/xiongwilee/iblo
 #### 第一步，下载Gracejs并安装依赖：
 
 ```
-# koa-grace即Gracejs
-$ git clone git@github.com:xiongwilee/koa-grace.git
-$ cd koa-grace
+$ git clone git@github.com:xiongwilee/Gracejs.git
+$ cd Gracejs
 $ npm install 
 ```
 
 **FYI：**小白同学可以注意几点：
-1. 如果不会用`git clone`命令，你可以直接点击[Gracejs主页](https://github.com/xiongwilee/koa-grace)的<kbd>Clone or download</kbd>按钮，然后点击<kbd>Download ZIP</kbd>；
+1. 如果不会用`git clone`命令，你可以直接点击[Gracejs主页](https://github.com/xiongwilee/Gracejs)的<kbd>Clone or download</kbd>按钮，然后点击<kbd>Download ZIP</kbd>；
 2. 使用`cnpm`或者`yarn`安装，体验会更佳；
 
 #### 第二步，启动服务：
 ```
-# 请保持在koa-grace目录下执行
+# 请保持在Gracejs目录下执行
 $ npm run dev 
 ```
 
@@ -76,7 +75,7 @@ $ npm run dev
 
 **2、在Gracejs中配置token**
 
-将你获取到的token复制下来之后，回到`koa-grace`的目录。粘贴到`koa-grace/config/main.development.js`下的`constant.token`里：
+将你获取到的token复制下来之后，回到`Gracejs`的目录。粘贴到`Gracejs/config/main.development.js`下的`constant.token`里：
 ```
   // 通用参数，以模板参数的形式传递给模板引擎
   constant: {
@@ -103,13 +102,13 @@ $ npm run dev
 
 ## 配置
 
-除了上述的token的配置之外，iBlog还支持其他配置；其他配置的文件在`koa-grace/app/iblog/controller/base.js`中的`config`变量。
+除了上述的token的配置之外，iBlog还支持其他配置；其他配置的文件在`Gracejs/app/iblog/controller/base.js`中的`config`变量。
 
 **FYI：**以下配置请保持你的服务处于正常启动的状态。
 
 ### owner及repo配置
 
-owner及repo配置及配置文章来源的仓储，在`koa-grace/app/iblog/controller/base.js`中的默认配置是：
+owner及repo配置及配置文章来源的仓储，在`Gracejs/app/iblog/controller/base.js`中的默认配置是：
 
 ```
 owner: 'xiongwilee', // github用户名
@@ -184,14 +183,14 @@ repo: 'blog' 		 // 作为文章源的github仓储
 
 上述是所有对iBlog配置的概述，如果你仅仅想简单使用这个博客系统，看到这里就行了。但如果你想进一步开发，做更加个性化的深度订制的话，可以继续往下看。
 
-**FYI：**以下操作请保持Gracejs服务启动（即在koa-grace目录下`npm run dev`为执行状态），并重新开一个命令行窗口操作。
+**FYI：**以下操作请保持Gracejs服务启动（即在Gracejs目录下`npm run dev`为执行状态），并重新开一个命令行窗口操作。
 
 ### 下载iBlog源码
 
-请再次注意，保持koa-grace为启动状态，并在`koa-grace`路径下执行：
+请再次注意，保持Gracejs为启动状态，并在`Gracejs`路径下执行：
 
 ```
-# 到koa-grace的同级路径下
+# 到Gracejs的同级路径下
 $ cd ../
 # 下载iBlog真正的源码
 $ git clone git@github.com:xiongwilee/iblog.git
@@ -208,7 +207,7 @@ iBlog业务实现基于 `gulp`+`require.js`+`less`+`Nunjucks` ，在iblog路径�
 $ npm run dev
 ```
 
-这时候你可以根据自己的需求订制iblog了。开发过程中，产出的文件就会通过gulp自动编译，产出到`koa-grace/app/iblog`目录中。
+这时候你可以根据自己的需求订制iblog了。开发过程中，产出的文件就会通过gulp自动编译，产出到`Gracejs/app/iblog`目录中。
 
 ### 文件打包
 

@@ -10,7 +10,7 @@ const through = require('through2');
 /* 文件路径 */
 let _path = exports.path = {
   app: './',                                    // 应用业务代码路径，相对于path.cwd的路径
-  dist: '../koa-grace/app/',                    // 产出文件路径
+  dist: '../Gracejs/app/',                    // 产出文件路径
   cwd: path.resolve('../'),                     // 
   base: path.resolve('../'),
   requireConfig: 'static/js/require.config.js'  // reqirejs配置文件路径

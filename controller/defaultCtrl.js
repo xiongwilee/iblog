@@ -11,10 +11,13 @@ module.exports = async function() {
     repoInfo: `github_api:/repos/${base.config.owner}/${base.config.repo}`,
     labelInfo: `github_api:/repos/${base.config.owner}/${base.config.repo}/labels`
   }, {
-    headers: { Authorization: `token ${base.config.token}` }
+    headers: { Authorization: `token ${base.config.token}` },
+    // 将query参数置空，避免影响获取默认参数
+    query: {}
   });
 
-  this.assert(res.repoInfo && res.repoInfo.statusCode === 200, 401, 'Personal Access Token Error!')
+  const repoInfo = res.repoInfo || {};
+  this.assert(repoInfo.statusCode === 200, 401, `Personal Access Token Error: ${repoInfo.body.message}`)
 
   // 仓储信息
   this.repoInfo = this.backData.repoInfo || {};
