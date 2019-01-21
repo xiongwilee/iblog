@@ -75,14 +75,10 @@ $ npm run dev
 
 **2、在Gracejs中配置token**
 
-将你获取到的token复制下来之后，回到`Gracejs`的目录。粘贴到`Gracejs/config/main.development.js`下的`constant.token`里：
+将你获取到的token复制下来之后，回到`Gracejs`的目录。粘贴到`Gracejs/config/main.development.js`下的`extra.token`里：
 ```
-  // 通用参数，以模板参数的形式传递给模板引擎
-  constant: {
-    cdn: '',
-    domain: {
-      demo: 'http://127.0.0.1:3000'
-    },
+  // 额外参数
+  extra: {
     // github personal token ，不知道这个配置，完全可以忽略它
     token: "在这里粘贴你刚刚获取到的token" 
   },
